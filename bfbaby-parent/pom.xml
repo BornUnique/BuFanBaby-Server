@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bufanbaby</groupId>
+	<artifactId>bfbaby-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<module.web.name>bfbaby-web</module.web.name>
+
+		<java.version>1.7</java.version>
+
+		<spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+
+		<logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<junit.version>4.11</junit.version>
+	</properties>
+
+
+	<modules>
+		<module>bfbaby-web</module>
+		<module>bfbaby-service</module>
+		<module>bfbaby-data</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.bufanbaby</groupId>
+				<artifactId>bfbaby-data</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.bufanbaby</groupId>
+				<artifactId>bfbaby-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<war>${module.web.name}/${module.web.name}-${project.version}.war</war>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
