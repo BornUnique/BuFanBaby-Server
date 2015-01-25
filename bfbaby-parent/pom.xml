@@ -15,7 +15,7 @@
 
 		<java.version>1.7</java.version>
 
-		<spring.framework.version>3.2.3.RELEASE</spring.framework.version>
+		<spring.framework.version>4.1.4.RELEASE</spring.framework.version>
 
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -29,7 +29,7 @@
 		<module>bfbaby-service</module>
 		<module>bfbaby-data</module>
 	</modules>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -42,11 +42,26 @@
 				<artifactId>bfbaby-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.framework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -56,7 +71,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
