@@ -10,10 +10,17 @@
 
 
 	<properties>
+		<spring.data.version>1.7.2.RELEASE</spring.data.version>
 		<hibernate.version>4.2.1.Final</hibernate.version>
+		<h2.version>1.4.185</h2.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.bufanbaby</groupId>
+			<artifactId>bfbaby-common</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
@@ -21,9 +28,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5</version>
 		</dependency>
 
 		<dependency>
@@ -32,6 +52,14 @@
 			<version>${spring.framework.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
